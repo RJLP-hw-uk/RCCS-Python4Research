@@ -34,17 +34,19 @@ Open Anaconda Prompt and run:
 ```bash
 conda create --name research-env python=3.9
 This creates a new environment called "research-env" with Python 3.9 installed.
+```
 
 To activate this environment:
 ```bash
 conda activate research-env
+```
 Your prompt should change to show the active environment.
 
 Installing Essential Packages
 Now let's install the core packages for scientific computing:
 ```bash
 conda install numpy pandas scipy matplotlib
-
+```
 What These Packages Do:
 NumPy: Provides support for large, multi-dimensional arrays and matrices, along with mathematical functions to operate on these elements. It's the foundation for scientific computing in Python.
 Pandas: Offers data structures and operations for manipulating numerical tables and time series. Think of it as "Excel for Python" but much more powerful.
@@ -119,7 +121,7 @@ import matplotlib.pyplot as plt
 print("NumPy version:", np.__version__)
 print("Pandas version:", pd.__version__)
 print("Everything is working!")
-
+```
 Run the file by clicking the play button in the top right or right-clicking and selecting "Run Python File in Terminal"
 
 If you see version information and "Everything is working!" without errors, congratulations! Your Python environment is set up correctly.
