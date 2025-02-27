@@ -14,6 +14,19 @@ This repository contains tutorials and resources for setting up Python environme
 - Example scripts
 - Cheat sheets and reference materials
 
+## Content Poll
+
+We're looking to expand this guide with more resources! Please vote on what you'd like to see next:
+
+- [ ] Advanced statistical analysis techniques
+- [ ] Machine learning for research applications
+- [ ] Reproducible research workflows
+- [ ] Interactive dashboards with Plotly/Dash
+- [ ] Domain-specific tutorials (biology, physics, social sciences, etc.)
+- [ ] Integration with other research tools (R, MATLAB, etc.)
+
+To vote, please open an issue with the title "Content Vote: [your choice]" or comment on the existing poll issue.
+
 ## Contributing
 
 Feel free to submit pull requests with improvements or corrections.
