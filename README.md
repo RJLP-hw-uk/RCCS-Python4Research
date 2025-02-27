@@ -16,16 +16,13 @@ This repository contains tutorials and resources for setting up Python environme
 
 ## Content Poll
 
-We're looking to expand this guide with more resources! Please vote on what you'd like to see next:
+We're looking to expand this guide with more resources! Vote on what you'd like to see next:
 
-- [ ] Advanced statistical analysis techniques
-- [ ] Machine learning for research applications
-- [ ] Reproducible research workflows
-- [ ] Interactive dashboards with Plotly/Dash
-- [ ] Domain-specific tutorials (biology, physics, social sciences, etc.)
-- [ ] Integration with other research tools (R, MATLAB, etc.)
+<a href="https://github.com/RJLP-hw-uk/Complete-Guide-to-Python-Setup-and-Data-Visualization-for-Research/discussions/1">
+  <img src="https://img.shields.io/badge/Vote%20Now-Interactive%20Poll-brightgreen?style=for-the-badge" alt="Vote Now" />
+</a>
 
-To vote, please open an issue with the title "Content Vote: [your choice]" or comment on the existing poll issue.
+[🔍 View current poll results](https://github.com/RJLP-hw-uk/Complete-Guide-to-Python-Setup-and-Data-Visualization-for-Research/discussions/1)
 
 ## Contributing
 
