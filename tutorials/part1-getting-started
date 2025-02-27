@@ -1,0 +1,36 @@
+# Part 1: Getting Started with Python on VS Code
+
+## What is Miniconda and Why Use Environment Managers?
+
+### Understanding Package Management
+
+Miniconda is a free minimal installer for conda, a powerful package, dependency, and environment manager. Think of it as a way to create isolated workspaces for your Python projects.
+
+> **Personal Experience**: When I first started using Python, I installed packages directly on my system. Eventually, I ended up with conflicting dependencies between projects - one needed TensorFlow 1.x while another required 2.x. After wasting hours debugging these conflicts, I discovered conda environments. Now, each project has its own environment with precisely the packages it needs, at the exact versions required. This approach has saved me countless hours of troubleshooting.
+
+### Why Environment Management Matters
+
+Environment management helps you:
+- Maintain reproducible research
+- Share your exact setup with colleagues
+- Avoid "it works on my machine" problems
+- Manage projects with conflicting dependencies
+
+## Setting Up Miniconda
+
+1. Download Miniconda from the [official website](https://docs.conda.io/en/latest/miniconda.html)
+2. Run the installer and follow the prompts
+3. Open the Anaconda Prompt (or terminal on Mac/Linux)
+
+## Understanding Conda Environments
+
+Think of conda environments like separate folders in Windows Explorer. Just as you might have different folders for different projects, conda environments let you have separate "folders" for different Python setups.
+
+In Windows Explorer, if you keep all your files in one folder, things get messy and hard to find. Similarly, if you install all Python packages in one environment, they can conflict with each other.
+
+### Creating Your First Environment
+
+Open Anaconda Prompt and run:
+
+```bash
+conda create --name research-env python=3.9
