@@ -1,5 +1,10 @@
 ## <span style="color:#9575CD">Part 2: Data Extraction and Processing</span>
 
+> **Prerequisites**: This guide assumes you're familiar with basic programming concepts like variables, data types, control structures (loops and conditionals), arrays, and functions/methods. If you need to brush up on these concepts, consider these free Python courses:
+> - [Codecademy's Learn Python](https://www.codecademy.com/learn/learn-python-3)
+> - [freeCodeCamp's Python Course](https://www.freecodecamp.org/learn/scientific-computing-with-python/)
+> - [Microsoft's Introduction to Python](https://docs.microsoft.com/en-us/learn/modules/intro-to-python/)
+
 ## Table of Contents
 - [Python Code Organization](#python-code-organization)
     - [Python Files and Modules](#python-files-and-modules)
@@ -21,7 +26,7 @@ Before diving into data extraction, let's understand how Python code is typicall
 
 - **Script (.py file)**: A standalone Python file that can be executed.
 - **Module**: A Python file containing functions, classes, and variables that can be imported.
-- **Package**: A directory containing multiple modules and a special `__init__.py` file.
+- **Package**: A directory containing multiple modules.
 
 ### <span style="color:#03A9F4">Basic Structure of a Python Script</span>
 
@@ -38,13 +43,12 @@ OUTPUT_FILE = "results.csv"
 # 3. Function definitions
 def process_data(filename):
     # Function implementation
-    pass
+    data = pd.read_csv(filename)
+    return data
 
-# 4. Main execution (often in a main function or under if __name__ == "__main__":)
-if __name__ == "__main__":
-    # Script execution starts here
-    data = process_data(DATA_DIR + "input.csv")
-    # More code...
+# 4. Main execution
+data = process_data(DATA_DIR + "input.csv")
+# More code...
 ```
 
 ## <span style="color:#689F38">Common Steps to Handling Data</span>
@@ -91,13 +95,12 @@ Reading CSV files is a common task in data extraction. Here's how you can do it 
 ```python
 import pandas as pd
 
-def read_csv_file(file_path):
-    data = pd.read_csv(file_path)
-    print(data.head())  # Display the first few rows of the dataframe
-    return data
+# Read the CSV file
+file_path = "data/sample.csv"
+data = pd.read_csv(file_path)
 
-if __name__ == "__main__":
-    data = read_csv_file("data/sample.csv")
+# Display the first few rows
+print(data.head())
 ```
 
 ## <span style="color:#689F38">Example 2: Reading Excel Files</span>
@@ -107,18 +110,23 @@ You can also read Excel files using pandas:
 ```python
 import pandas as pd
 
-def read_excel_file(file_path, sheet_name="Sheet1"):
-    data = pd.read_excel(file_path, sheet_name=sheet_name)
-    print(data.head())  # Display the first few rows of the dataframe
-    return data
+# Read the Excel file
+file_path = "data/sample.xlsx"
+sheet_name = "Sheet1"
+data = pd.read_excel(file_path, sheet_name=sheet_name)
 
-if __name__ == "__main__":
-    data = read_excel_file("data/sample.xlsx")
+# Display the first few rows
+print(data.head())
 ```
 
 ### <span style="color:#03A9F4">Pulling Data from Specific Cells, Ranges, and Sheets</span>
 
 ```python
+import pandas as pd
+
+# Reading an Excel file
+excel_data = pd.read_excel("data/sample.xlsx")
+
 # Reading a specific cell
 cell_value = excel_data.at[0, 'ColumnName']
 
@@ -133,10 +141,15 @@ sheet2 = pd.read_excel("data/sample.xlsx", sheet_name="Sheet2")
 ### <span style="color:#03A9F4">Filtering Data</span>
 
 ```python
-# Filtering by row/heading
+import pandas as pd
+
+# Load a sample dataset
+data = pd.read_csv("data/sample.csv")
+
+# Filtering by a condition
 filtered_data = data[data['column'] > value]
 
-# Using functions and loops
+# Using functions for more complex filtering
 filtered_data = data[data['column'].apply(lambda x: x.startswith('prefix'))]
 
 # String extraction

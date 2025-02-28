@@ -166,13 +166,19 @@ Create a new file (Ctrl+N)
 Save it as "test.py" (Ctrl+S)
 Add this code:
 ```python
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
+# Import Python Packages
+import numpy as np                  # NumPy is used for numerical operations and arrays
+import pandas as pd                 # Pandas is used for data manipulation and analysis
+import matplotlib.pyplot as plt     # Matplotlib is used for creating visualizations
 
+# Print version information to confirm successful installation
 print("NumPy version:", np.__version__)
 print("Pandas version:", pd.__version__)
 print("Everything is working!")
+
+# If you see the version numbers printed without errors,
+# your Python environment is correctly set up!
+```
 ```
 Run the file by clicking the play button in the top right or right-clicking and selecting "Run Python File in Terminal"
 

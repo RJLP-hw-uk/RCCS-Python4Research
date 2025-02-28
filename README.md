@@ -2,6 +2,13 @@
 
 This repository contains tutorials and resources for setting up Python environments and using Python for data analysis and visualization in research contexts.
 
+## Prerequisites
+
+**Prerequisites**: This guide assumes you're familiar with basic programming concepts like variables, data types, control structures (loops and conditionals), arrays, and functions/methods. If you need to brush up on these concepts, consider these free Python courses:
+- [Codecademy's Learn Python](https://www.codecademy.com/learn/learn-python-3)
+- [freeCodeCamp's Python Course](https://www.freecodecamp.org/learn/scientific-computing-with-python/)
+- [Microsoft's Introduction to Python](https://docs.microsoft.com/en-us/learn/modules/intro-to-python/)
+
 ## Contents
 
 1. [Getting Started with Python and VS Code](tutorials/part1-getting-started.md)
