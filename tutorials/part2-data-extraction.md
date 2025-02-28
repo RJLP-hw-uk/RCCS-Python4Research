@@ -2,12 +2,15 @@
 
 ## Table of Contents
 - [Common Steps to Handling Data](#common-steps-to-handling-data)
-    - [Step 1: Knowing Your Data Format](#knowing-your-data-format)
-    - [Step 2: Pulling Your Data into Python](#pulling-your-data-into-python)
-    - [Step 3: Filtering and Cleaning Your Data](#filtering-and-cleaning-your-data)
-    - [Step 4: Saving Your Clean Data](#saving-your-clean-data)
+    - [Step 1: Knowing Your Data Format](#step-1-knowing-your-data-format)
+    - [Step 2: Pulling Your Data into Python](#step-2-pulling-your-data-into-python)
+    - [Step 3: Filtering, Cleaning, and Manipulating Your Data](#step-3-filtering-cleaning-and-manipulating-your-data)
+    - [Step 4: Saving Your Clean Data](#step-4-saving-your-clean-data)
 - [Example 1: Reading CSV Files](#example-1-reading-csv-files)
 - [Example 2: Reading Excel Files](#example-2-reading-excel-files)
+    - [Using Pandas for Excel](#using-pandas-for-excel)
+    - [Using xlwings for Excel](#using-xlwings-for-excel)
+    - [Using openpyxl for Excel](#using-openpyxl-for-excel)
 - [Next Steps](#next-steps)
 
 ## <span style="color:#689F38">Common Steps to Handling Data</span>
