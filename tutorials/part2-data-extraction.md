@@ -89,18 +89,12 @@ data.to_csv("data/cleaned_data.csv", index=False)
 # Saving to Excel
 data.to_excel("data/cleaned_data.xlsx", index=False)
 
-# Saving to CSV
-data.to_csv("data/cleaned_data.csv", index=False)
-
-# Saving to Excel
-data.to_excel("data/cleaned_data.xlsx", index=False)
-
 # Setting index=False removes the auto-generated pandas indices from the output.
 # This is typically preferred for cleaned data files to avoid confusion.
 
 ```
 
-## <span style="color:#689F38">Example 1: Advanced Pandas Usage</span>
+## <span style="color:#689F38">Example 1: Reading CSV Files</span>
 
 Pandas offers powerful functionality for data handling beyond basic reading:
 
@@ -108,12 +102,16 @@ Pandas offers powerful functionality for data handling beyond basic reading:
 import pandas as pd
 import numpy as np
 
+# Basic CSV reading
+data = pd.read_csv("data/sample.csv")
+
 # Reading with advanced options
 df = pd.read_csv("data/sample.csv", 
-                skiprows=2,              # Skip first 2 rows
-                na_values=["NA", "N/A"], # Custom NA values
-                usecols=["col1", "col2"],# Read only specific columns
-                nrows=1000)              # Limit number of rows
+                skiprows=2,                 # Skip first 2 rows
+                usecols=["col1", "col2"],   # Read only specific columns
+                nrows=1000,                 # Limit number of rows
+                na_values=["NA", "N/A"],    # Custom NA values
+                )                 
 
 # Memory efficient reading for large files
 chunks = pd.read_csv("data/large_file.csv", chunksize=10000)
@@ -127,69 +125,25 @@ ts_data = pd.read_csv("data/timeseries.csv",
                      parse_dates=["date_column"],
                      index_col="date_column")
 
-# Reshaping data
-# Wide to long format
-long_df = pd.melt(df, 
-                 id_vars=["id_column"],
-                 value_vars=["var1", "var2"],
-                 var_name="variable",
-                 value_name="value")
+# Filtering by a condition
+filtered_data = data[data['column'] > value]
 
-# Pivot tables
-pivot_df = df.pivot_table(values="value_col", 
-                         index="row_categories",
-                         columns="col_categories",
-                         aggfunc=np.mean)
+# Using functions for more complex filtering
+filtered_data = data[data['column'].apply(lambda x: x.startswith('prefix'))]
 
-# SQL-like joins
-merged_df = pd.merge(df1, df2, 
-                    on="key_column",     # For single key
-                    # left_on="df1_key", # For different column names
-                    # right_on="df2_key",
-                    how="inner")         # inner, outer, left, right
+# String extraction
+filtered_data = data[data['column'].str.contains('substring')]
 ```
 
-## <span style="color:#689F38">Example 2: Other Data Handling Libraries</span>
+## <span style="color:#689F38">Example 2: Reading Excel Files</span>
 
-While pandas is versatile, specialized libraries can enhance your data workflow:
-
-```python
-# NumPy for numerical operations
-import numpy as np
-array = np.array([[1, 2, 3], [4, 5, 6]])
-np_mean = np.mean(array, axis=0)     # Column means
-np_filtered = array[array > 2]       # Boolean indexing
-
-# Dask for larger-than-memory datasets
-import dask.dataframe as dd
-dask_df = dd.read_csv("data/huge_data_*.csv")  # Can handle multiple files
-result = dask_df.groupby('column').mean().compute()  # Lazy evaluation until compute()
-
-# Polars for fast DataFrame operations
-import polars as pl
-pl_df = pl.read_csv("data/sample.csv")
-filtered = pl_df.filter(pl.col("value") > 100).groupby("category").agg(pl.sum("amount"))
-
-# PyArrow for efficient data processing
-import pyarrow as pa
-import pyarrow.csv as csv
-table = csv.read_csv("data/sample.csv")
-filtered_table = table.filter(pa.compute.greater(table["value"], 100))
-
-# SQLAlchemy for database interactions
-from sqlalchemy import create_engine
-engine = create_engine('sqlite:///data.db')
-sql_df = pd.read_sql("SELECT * FROM table", engine)
-sql_df.to_sql("new_table", engine, if_exists="replace")
-```
-
-### <span style="color:#03A9F4">Pulling Data from Specific Cells, Ranges, and Sheets</span>
+### <span style="color:#03A9F4">Using Pandas for Excel</span>
 
 ```python
 import pandas as pd
 
 # Reading an Excel file
-excel_data = pd.read_excel("data/sample.xlsx")
+excel_data = pd.read_excel("data/sample.xlsx", sheet_name="Sheet1")
 
 # Reading a specific cell
 cell_value = excel_data.at[0, 'ColumnName']
@@ -202,23 +156,76 @@ sheet1 = pd.read_excel("data/sample.xlsx", sheet_name="Sheet1")
 sheet2 = pd.read_excel("data/sample.xlsx", sheet_name="Sheet2")
 ```
 
-### <span style="color:#03A9F4">Filtering Data</span>
+### <span style="color:#03A9F4">Using xlwings for Excel</span>
+
+While pandas is excellent for data analysis, specialized libraries offer more control for Excel interactions:
 
 ```python
-import pandas as pd
+# xlwings provides direct access to Excel files with more control
+import xlwings as xw
 
-# Load a sample dataset
-data = pd.read_csv("data/sample.csv")
+# Open an Excel file
+wb = xw.Book("data/sample.xlsx")  
+sheet = wb.sheets["Sheet1"]
 
-# Filtering by a condition
-filtered_data = data[data['column'] > value]
+# Read specific ranges with native Excel references
+data_range = sheet.range("A1:D10").value  # Returns a list of lists
+cell_value = sheet.range("A1").value
 
-# Using functions for more complex filtering
-filtered_data = data[data['column'].apply(lambda x: x.startswith('prefix'))]
+# Read named ranges
+named_range = sheet.range("NamedRange").value
 
-# String extraction
-filtered_data = data[data['column'].str.contains('substring')]
+# Dynamic interaction with Excel (works with Excel running)
+sheet.range("E1").value = "New Value"  # Write data
+sheet.range("A1:A10").color = (255, 0, 0)  # Format cells
+wb.save()
 ```
+
+Benefits of xlwings over pandas:
+- Two-way communication (read/write while Excel is running)
+- Automate Excel with Python without losing Excel's interface benefits
+- Direct interaction with open Excel files
+- Preserves Excel formatting and formulas
+- Access to Excel's calculation engine
+
+### <span style="color:#03A9F4">Using openpyxl for Excel</span>
+
+openpyxl provides detailed control over Excel files at a lower level:
+
+```python
+# openpyxl for granular control over Excel files
+import openpyxl
+
+# Load the workbook and select the sheet
+wb = openpyxl.load_workbook("data/sample.xlsx")
+sheet = wb["Sheet1"]
+
+# Read cell values
+cell_value = sheet["A1"].value
+cell_value_alt = sheet.cell(row=1, column=1).value
+
+# Read a range into a list of tuples
+data = []
+for row in sheet["A1:C10"]:
+    row_data = [cell.value for cell in row]
+    data.append(row_data)
+    
+# Edit cell properties
+sheet["A1"].value = "New Header"
+sheet["A1"].font = openpyxl.styles.Font(bold=True, color="FF0000")
+sheet["A1"].fill = openpyxl.styles.PatternFill(start_color="FFFF00", fill_type="solid")
+
+# Save the modified workbook
+wb.save("data/modified_sample.xlsx")
+```
+
+Benefits of openpyxl over pandas:
+- Detailed control over Excel's formatting features
+- Cell-by-cell manipulation of styles, formulas, and content
+- Create Excel files with complex formatting from scratch
+- Access to Excel features like charts, comments, and named ranges
+- No dependency on Excel installation (unlike xlwings)
+- Great for generating professional reports and templates
 
 ## <span style="color:#689F38">Next Steps</span>
 
