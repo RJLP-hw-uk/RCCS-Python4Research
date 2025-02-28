@@ -1,63 +1,22 @@
 ## <span style="color:#9575CD">Part 2: Data Extraction and Processing</span>
 
-> **Prerequisites**: This guide assumes you're familiar with basic programming concepts like variables, data types, control structures (loops and conditionals), arrays, and functions/methods. If you need to brush up on these concepts, consider these free Python courses:
-> - [Codecademy's Learn Python](https://www.codecademy.com/learn/learn-python-3)
-> - [freeCodeCamp's Python Course](https://www.freecodecamp.org/learn/scientific-computing-with-python/)
-> - [Microsoft's Introduction to Python](https://docs.microsoft.com/en-us/learn/modules/intro-to-python/)
-
 ## Table of Contents
-- [Python Code Organization](#python-code-organization)
-    - [Python Files and Modules](#python-files-and-modules)
-    - [Basic Structure of a Python Script](#basic-structure-of-a-python-script)
 - [Common Steps to Handling Data](#common-steps-to-handling-data)
-    - [Knowing Your Data Format](#knowing-your-data-format)
-    - [Pulling Your Data into Python](#pulling-your-data-into-python)
-    - [Filtering and Cleaning Your Data](#filtering-and-cleaning-your-data)
-    - [Saving Your Clean Data](#saving-your-clean-data)
+    - [Step 1: Knowing Your Data Format](#knowing-your-data-format)
+    - [Step 2: Pulling Your Data into Python](#pulling-your-data-into-python)
+    - [Step 3: Filtering and Cleaning Your Data](#filtering-and-cleaning-your-data)
+    - [Step 4: Saving Your Clean Data](#saving-your-clean-data)
 - [Example 1: Reading CSV Files](#example-1-reading-csv-files)
 - [Example 2: Reading Excel Files](#example-2-reading-excel-files)
 - [Next Steps](#next-steps)
 
-## <span style="color:#689F38">Python Code Organization</span>
-
-Before diving into data extraction, let's understand how Python code is typically organized.
-
-### <span style="color:#03A9F4">Python Files and Modules</span>
-
-- **Script (.py file)**: A standalone Python file that can be executed.
-- **Module**: A Python file containing functions, classes, and variables that can be imported.
-- **Package**: A directory containing multiple modules.
-
-### <span style="color:#03A9F4">Basic Structure of a Python Script</span>
-
-```python
-# 1. Import statements
-import numpy as np
-import pandas as pd
-import os
-
-# 2. Constants and configuration
-DATA_DIR = "data/"
-OUTPUT_FILE = "results.csv"
-
-# 3. Function definitions
-def process_data(filename):
-    # Function implementation
-    data = pd.read_csv(filename)
-    return data
-
-# 4. Main execution
-data = process_data(DATA_DIR + "input.csv")
-# More code...
-```
-
 ## <span style="color:#689F38">Common Steps to Handling Data</span>
 
-### <span style="color:#03A9F4">Knowing Your Data Format</span>
+### <span style="color:#03A9F4">Step 1: Knowing Your Data Format</span>
 
 Understanding the format of your data is crucial. Common formats include CSV, Excel, JSON, and SQL databases. Tools like Microsoft Excel, Google Sheets, and text editors can help you inspect the data.
 
-### <span style="color:#03A9F4">Pulling Your Data into Python</span>
+### <span style="color:#03A9F4">Step 2: Pulling Your Data into Python</span>
 
 Use libraries like `pandas` to read data into Python. For example:
 ```python
@@ -66,18 +25,18 @@ import pandas as pd
 # Reading a CSV file
 csv_data = pd.read_csv("data/sample.csv")
 
-# Reading an Excel file
+# Reading an Excel file - Here we added an additional argument to specify 'which' excel sheet to read from
 excel_data = pd.read_excel("data/sample.xlsx", sheet_name="Sheet1")
 ```
 
-### <span style="color:#03A9F4">Filtering and Cleaning Your Data</span>
+### <span style="color:#03A9F4">Step 3: Filtering and Cleaning Your Data</span>
 
 Cleaning data involves handling missing values, removing duplicates, and filtering rows/columns. Methods include:
 - Dropping missing values: `data.dropna()`
 - Filling missing values: `data.fillna(value)`
 - Filtering rows: `data[data['column'] > value]`
 
-### <span style="color:#03A9F4">Saving Your Clean Data</span>
+### <span style="color:#03A9F4">Step 5: Saving Your Clean Data</span>
 
 After cleaning, save your data back to a file:
 ```python
