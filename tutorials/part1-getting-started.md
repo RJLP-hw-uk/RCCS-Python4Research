@@ -1,36 +1,43 @@
 # <span style="color:#9575CD">Part 1: Getting Started with Python on VS Code</span>
 
 ## Table of Contents
-- [Step 1: Setting Up Miniconda](#step-1-setting-up-miniconda)
-- [What is Miniconda and Why Use Environment Managers?](#what-is-miniconda-and-why-use-environment-managers)
-    - [Understanding Package Management](#understanding-package-management)
-    - [Understanding Conda Environments](#understanding-conda-environments)
-    - [Why Environment Management Matters](#why-environment-management-matters)
+- [Step 1: Setting Up Anaconda](#step-1-setting-up-anaconda)
 - [Step 2: Creating Your First Environment](#step-2-creating-your-first-environment)
 - [Step 3: Installing Essential Python Packages](#step-3-installing-essential-python-packages)
-    - [Alternatives Worth Knowing](#alternatives-worth-knowing)
 - [Step 4: Setting Up VS Code](#step-4-setting-up-vs-code)
-    - [Installing VS Code](#installing-vs-code)
-    - [What is an IDE?](#what-is-an-ide)
-    - [Why VS Code?](#why-vs-code)
 - [Step 5: Navigating VS Code](#step-5-navigating-vs-code)
 - [Step 6: Installing Extensions](#step-6-installing-extensions)
-    - [Installing the Python Extensions Package](#installing-the-python-extensions-package)
-    - [Additional Useful Extensions](#additional-useful-extensions)
 - [Step 7: Connecting VS Code to Your Conda Environment](#step-7-connecting-vs-code-to-your-conda-environment)
-- [Next Steps](#next-steps)
 
-## <span style="color:#689F38">Step 1: Setting Up Miniconda</span>
+## <span style="color:#689F38">Step 1: Setting Up Anaconda</span>
+
+### <span style="color:#03A9F4">Option 1: Anaconda with Navigator (Recommended for Beginners)</span>
+
+1. Download Anaconda from the [official website](https://www.anaconda.com/download)
+2. Run the installer and follow the prompts
+3. Launch Anaconda Navigator from your start menu or applications folder
+
+![Anaconda Download Page](images/anaconda-download.png)
+
+Anaconda comes with a user-friendly graphical interface called Navigator that makes it easy to create environments and install packages without using command-line instructions.
+
+![Anaconda Navigator Home](images/anaconda-navigator-home.png)
+
+### <span style="color:#03A9F4">Option 2: Miniconda (Advanced/Faster Option)</span>
+
+If you prefer a more lightweight installation or are comfortable with command-line interfaces (CLI):
 
 1. Download Miniconda from the [official website](https://docs.conda.io/en/latest/miniconda.html)
 2. Run the installer and follow the prompts
 3. Open the Anaconda Prompt (or terminal on Mac/Linux)
 
-## <span style="color:#689F38">What is Miniconda and Why Use Environment Managers?</span>
+Miniconda provides the same core functionality as Anaconda but with a smaller footprint and is primarily operated through command-line instructions.
+
+## <span style="color:#689F38">What is Anaconda/Miniconda and Why Use Environment Managers?</span>
 
 ### <span style="color:#03A9F4">Understanding Package Management</span>
 
-Miniconda is a free minimal installer for conda, a powerful package, dependency, and environment manager. Think of it as a way to create isolated workspaces for your Python projects.
+Anaconda is a free distribution of Python that includes conda, a powerful package, dependency, and environment manager. Think of it as a way to create isolated workspaces for your Python projects.
 
 ### <span style="color:#03A9F4">Understanding Conda Environments</span>
 
@@ -50,10 +57,23 @@ Environment management helps you:
 
 ## <span style="color:#689F38">Step 2: Creating Your First Environment</span>
 
-Open Anaconda Prompt and run:
+### <span style="color:#03A9F4">Using Anaconda Navigator (Beginner-Friendly)</span>
+
+1. Open Anaconda Navigator
+2. Click on the "Environments" tab in the left sidebar
+3. Click the "Create" button at the bottom of the environments list
+4. Name your environment "research-env" and select Python 3.11 from the dropdown
+5. Click "Create" to finalize your environment
+
+![Creating Environment in Navigator](images/create-environment-navigator.png)
+
+To activate this environment in Navigator, simply click on its name in the environments list. You can then return to the "Home" tab to install applications that will use this environment.
+
+### <span style="color:#03A9F4">Using Command Line (Advanced)</span>
+
+Open Anaconda Prompt (or terminal on Mac/Linux) and run:
 ```bash
 conda create --name research-env python=3.11
-This creates a new environment called "research-env" with Python 3.11 installed.
 ```
 
 To activate this environment:
