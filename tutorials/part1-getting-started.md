@@ -11,7 +11,20 @@
 
 ## <span style="color:#689F38">Step 1: Setting Up Anaconda</span>
 
+### <span style="color:#03A9F4">Heriot-Watt University Computers (Windows)</span>
+
+1. Open the Software Centre from the Start menu
+2. Search for "Anaconda 3"
+3. Click "Install" and wait for the installation to complete
+4. Launch Anaconda Navigator from the Start menu after installation
+
+![Heriot-Watt Software Centre](images/heriot-watt-software-centre.png)
+
+After installation, you'll be able to access Anaconda from the Start menu. This provides you with the same functionality as a personal installation of Anaconda.
+
 ### <span style="color:#03A9F4">Option 1: Anaconda with Navigator (Recommended for Beginners)</span>
+
+For personal computers not managed by Heriot-Watt University:
 
 1. Download Anaconda from the [official website](https://www.anaconda.com/download)
 2. Run the installer and follow the prompts
@@ -53,7 +66,7 @@ Environment management helps you:
 - Avoid "it works on my machine" problems
 - Manage projects with conflicting dependencies
 
-> **Personal Experience**: When I first started using Python, I installed packages directly on my system. Eventually, I ended up with conflicting dependencies between projects - one needed TensorFlow 1.x while another required 2.x. After wasting hours debugging these conflicts, I discovered conda environments. Now, each project has its own environment with precisely the packages it needs, at the exact versions required. This approach has saved me countless hours of troubleshooting.
+> **Personal Experience**: 
 
 ## <span style="color:#689F38">Step 2: Creating Your First Environment</span>
 
@@ -84,10 +97,29 @@ Your prompt should change to show the active environment.
 
 ## <span style="color:#689F38">Step 3: Installing Essential Python Packages</span>
 
-Now let's install the core packages for scientific computing:
+### <span style="color:#03A9F4">Using Anaconda Navigator (Beginner-Friendly)</span>
+
+1. Open Anaconda Navigator
+2. Make sure your "research-env" is active (click on it in the Environments tab)
+3. Return to the "Home" tab
+4. Select your environment from the dropdown menu (it may say "Applications on" followed by your environment name)
+5. Click on "Install" under the packages you want to add (numpy, pandas, scipy, matplotlib)
+6. Wait for the installation to complete
+
+![Installing Packages in Navigator](images/installing-packages-navigator.png)
+
+### <span style="color:#03A9F4">Using Command Line (Advanced)</span>
+
+Once your environment is active (you should see "(research-env)" at the beginning of your command prompt), install packages by running:
 ```bash
 conda install numpy pandas scipy matplotlib
 ```
+
+You can install multiple packages in a single command as shown above. To confirm successful installation:
+```bash
+conda list
+```
+
 **What These Packages Do:**
 
 - **NumPy**: Provides support for large, multi-dimensional arrays and matrices, along with mathematical functions to operate on these elements. It's the foundation for scientific computing in Python.
@@ -112,8 +144,19 @@ conda install numpy pandas scipy matplotlib
 
 ## <span style="color:#689F38">Step 4: Setting Up VS Code</span>
 
-### <span style="color:#03A9F4">Installing VS Code</span>
-VS Code can be installed through the software center on our organization's computers. Simply search for "Visual Studio Code" and click install.
+### <span style="color:#03A9F4">Installing VS Code on Heriot-Watt University Computers</span>
+VS Code can be installed through the Software Centre on Heriot-Watt University computers:
+1. Open the Software Centre from the Start menu
+2. Search for "VS Code" 
+3. Click "Install" and wait for the installation to complete
+4. Launch VS Code from the Start menu after installation
+
+### <span style="color:#03A9F4">Installing VS Code on Personal Computers</span>
+For personal computers not managed by Heriot-Watt University:
+1. Visit the [Visual Studio Code website](https://code.visualstudio.com/)
+2. Download the appropriate installer for your operating system (Windows, macOS, or Linux)
+3. Run the installer and follow the prompts
+4. Launch VS Code after installation completes
 
 ### <span style="color:#03A9F4">What is an IDE?</span>
 An Integrated Development Environment (IDE) combines a code editor, debugger, and other tools in one application. While you can write Python code in any text editor, IDEs provide features that make development easier and more efficient.
