@@ -18,7 +18,7 @@
 3. Click "Install" and wait for the installation to complete
 4. Launch Anaconda Navigator from the Start menu after installation
 
-![Heriot-Watt Software Centre](images/heriot-watt-software-centre.png)
+![Heriot-Watt Software Centre](images/software-centre-anaconda.png)
 
 After installation, you'll be able to access Anaconda from the Start menu. This provides you with the same functionality as a personal installation of Anaconda.
 
@@ -151,6 +151,8 @@ VS Code can be installed through the Software Centre on Heriot-Watt University c
 3. Click "Install" and wait for the installation to complete
 4. Launch VS Code from the Start menu after installation
 
+![VS Code in Software Centre](images/software-centre-vscode.png)
+
 ### <span style="color:#03A9F4">Installing VS Code on Personal Computers</span>
 For personal computers not managed by Heriot-Watt University:
 1. Visit the [Visual Studio Code website](https://code.visualstudio.com/)
@@ -170,12 +172,29 @@ An Integrated Development Environment (IDE) combines a code editor, debugger, an
 While you could use other environments like PyCharm, Spyder, or Jupyter, VS Code offers the best combination of features for our research needs. That said, the skills you learn will transfer to other environments if you prefer them.
 
 ## <span style="color:#689F38">Step 5: Navigating VS Code</span>
+
 When you first open VS Code, you'll see a welcome screen. Here are the key areas to be familiar with:
+
+### <span style="color:#03A9F4">Activity Bar Functions</span>
+
+The Activity Bar provides quick access to VS Code's main views:
+
+- **Explorer**: Browse your project files and folders
+- **Search**: Find text across your project
+- **Source Control**: Manage Git repositories
+- **Run and Debug**: Execute and troubleshoot your code
+- **Extensions**: Install and manage VS Code add-ons
+
+![Visual Studio Code Activity Bar](images/activity-bar-vscode.png)
+
+### <span style="color:#03A9F4">VS Code Interface</span>
 
 - **Activity Bar**: The leftmost column with icons for different views
 - **Side Bar**: Opens when you click an Activity Bar icon, showing files, extensions, etc.
 - **Editor**: The main area where you'll write code
 - **Status Bar**: At the bottom, showing information about your project
+
+![VS Code Interface Overview](images/vscode-interface-labelled.png)
 
 ## <span style="color:#689F38">Step 6: Installing Extensions</span>
 
@@ -187,7 +206,9 @@ To enhance your Python development experience in VS Code, you'll need to install
 2. In the search box, type "Python" and look for the extension published by Microsoft.
 3. Click the "Install" button to add the extension to your VS Code setup.
 
-This package includes several essential features:
+### <span style="color:#03A9F4">Recommended Extensions for Research</span>
+
+Here are the essential extensions I recommend installing:
 
 - **Python Language Support**: Provides syntax highlighting, code snippets, and other language-specific features.
 - **Debugging**: Allows you to set breakpoints, inspect variables, and step through your code.
@@ -217,16 +238,34 @@ Once these extensions are installed, you can connect VS Code to your conda envir
 
 ## <span style="color:#689F38">Step 7: Connecting VS Code to Your Conda Environment</span>
 
-Open VS Code
-Open the Command Palette (Ctrl+Shift+P)
-Type "Python: Select Interpreter" and select it
-Choose your "research-env" environment from the list (You can also specify its directory)
+To connect VS Code to your conda environment, you need to select the appropriate Python interpreter:
 
-You should now see the environment name in the status bar. VS Code will use this environment when running Python code.
+### <span style="color:#03A9F4">Selecting Your Python Interpreter</span>
+
+#### Option 1: Using the Command Palette
+1. Open VS Code
+2. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on macOS) to open the Command Palette
+3. Type "Python: Select Interpreter" and select it
+4. Choose your "research-env" environment from the list
+
+#### Option 2: Using the Status Bar
+1. Look at the status bar at the bottom of the VS Code window
+2. Find where it shows the Python version or "Select Python Interpreter"
+3. Click on this area to select your "research-env" environment
+
+#### Option 3: Using the Python Icon in Activity Bar
+1. Click on the Python icon in the Activity Bar (left side of VS Code)
+2. In the "INTERPRETER" section, click on the current interpreter or "Select Python Interpreter"
+3. Choose your "research-env" environment from the dropdown list
+
+You should now see the environment name in the status bar (bottom right corner). 
+VS Code will use this environment when running Python code.
+
 To verify everything is working:
 
 Create a new file (Ctrl+N)
 Save it as "test.py" (Ctrl+S)
+
 Add this code:
 ```python
 # Import Python Packages
@@ -242,10 +281,9 @@ print("Everything is working!")
 # If you see the version numbers printed without errors,
 # your Python environment is correctly set up!
 ```
-```
 Run the file by clicking the play button in the top right or right-clicking and selecting "Run Python File in Terminal"
 
 If you see version information and "Everything is working!" without errors, congratulations! Your Python environment is set up correctly.
 
 ## <span style="color:#689F38">Next Steps</span>
-Now that you have your environment set up, proceed to Part 2: Data Extraction and Processing to learn how to work with data files.
+Now that you have your environment set up, proceed to Part 2.
