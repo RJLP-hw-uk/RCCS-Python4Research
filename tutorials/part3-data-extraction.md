@@ -1,4 +1,4 @@
-## <span style="color:#9575CD">Part 2: Data Extraction and Processing</span>
+## <span style="color:#9575CD">Part 3: Data Extraction and Processing</span>
 
 ## Table of Contents
 - [Common Steps to Handling Data](#common-steps-to-handling-data)

@@ -1,4 +1,4 @@
-# <span style="color:#9575CD">Part 3: Data Visualization</span>
+# <span style="color:#9575CD">Part 4: Data Visualization</span>
 
 ## Table of Contents
 - [Reference Materials](#reference-materials)
