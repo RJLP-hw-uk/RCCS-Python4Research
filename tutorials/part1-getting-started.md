@@ -18,7 +18,7 @@
 3. Click "Install" and wait for the installation to complete
 4. Launch Anaconda Navigator from the Start menu after installation
 
-![Heriot-Watt Software Centre](images/software-centre-anaconda.png)
+![Heriot-Watt Software Centre](resources/images/software-centre-anaconda.png)
 
 After installation, you'll be able to access Anaconda from the Start menu. This provides you with the same functionality as a personal installation of Anaconda.
 
@@ -30,11 +30,11 @@ For personal computers not managed by Heriot-Watt University:
 2. Run the installer and follow the prompts
 3. Launch Anaconda Navigator from your start menu or applications folder
 
-![Anaconda Download Page](images/anaconda-download.png)
+![Anaconda Download Page](resources/images/anaconda-download.png)
 
 Anaconda comes with a user-friendly graphical interface called Navigator that makes it easy to create environments and install packages without using command-line instructions.
 
-![Anaconda Navigator Home](images/anaconda-navigator-home.png)
+![Anaconda Navigator Home](resources/images/anaconda-navigator-home.png)
 
 ### <span style="color:#03A9F4">Option 2: Miniconda (Advanced/Faster Option)</span>
 
@@ -78,7 +78,7 @@ Environment management helps you:
 4. Name your environment "research-env" and select Python 3.11 from the dropdown
 5. Click "Create" to finalize your environment
 
-![Creating Environment in Navigator](images/create-environment-navigator.png)
+![Creating Environment in Navigator](resources/images/create-environment-navigator.png)
 
 To activate this environment in Navigator, simply click on its name in the environments list. You can then return to the "Home" tab to install applications that will use this environment.
 
@@ -106,7 +106,7 @@ Your prompt should change to show the active environment.
 5. Click on "Install" under the packages you want to add (numpy, pandas, scipy, matplotlib)
 6. Wait for the installation to complete
 
-![Installing Packages in Navigator](images/installing-packages-navigator.png)
+![Installing Packages in Navigator](resources/images/installing-packages-navigator.png)
 
 ### <span style="color:#03A9F4">Using Command Line (Advanced)</span>
 
@@ -151,7 +151,7 @@ VS Code can be installed through the Software Centre on Heriot-Watt University c
 3. Click "Install" and wait for the installation to complete
 4. Launch VS Code from the Start menu after installation
 
-![VS Code in Software Centre](images/software-centre-vscode.png)
+![VS Code in Software Centre](resources/images/software-centre-vscode.png)
 
 ### <span style="color:#03A9F4">Installing VS Code on Personal Computers</span>
 For personal computers not managed by Heriot-Watt University:
@@ -185,7 +185,7 @@ The Activity Bar provides quick access to VS Code's main views:
 - **Run and Debug**: Execute and troubleshoot your code
 - **Extensions**: Install and manage VS Code add-ons
 
-![Visual Studio Code Activity Bar](images/activity-bar-vscode.png)
+![Visual Studio Code Activity Bar](resources/images/activity-bar-vscode.png)
 
 ### <span style="color:#03A9F4">VS Code Interface</span>
 
@@ -194,7 +194,7 @@ The Activity Bar provides quick access to VS Code's main views:
 - **Editor**: The main area where you'll write code
 - **Status Bar**: At the bottom, showing information about your project
 
-![VS Code Interface Overview](images/vscode-interface-labelled.png)
+![VS Code Interface Overview](resources/images/vscode-interface-labelled.png)
 
 ## <span style="color:#689F38">Step 6: Installing Extensions</span>
 
