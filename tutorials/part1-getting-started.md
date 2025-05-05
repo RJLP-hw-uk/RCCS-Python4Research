@@ -112,7 +112,7 @@ Your prompt should change to show the active environment.
 
 Once your environment is active (you should see "(research-env)" at the beginning of your command prompt), install packages by running:
 ```bash
-conda install numpy pandas scipy matplotlib
+conda install numpy pandas scipy matplotlib ipykernel
 ```
 
 You can install multiple packages in a single command as shown above. To confirm successful installation:
@@ -126,6 +126,7 @@ conda list
 - **Pandas**: Offers data structures and operations for manipulating numerical tables and time series. Think of it as "Excel for Python" but much more powerful.
 - **SciPy**: Builds on NumPy with additional functionality for optimization, signal processing, statistics, and more.
 - **Matplotlib**: The standard plotting library for creating static, animated, and interactive visualizations.
+- **ipykernel**: Necessary component to run jupyter notebook files in your environment.
 
 ### <span style="color:#03A9F4">Alternatives Worth Knowing:</span>
 
@@ -213,7 +214,7 @@ Here are the essential extensions I recommend installing:
 - **Python Language Support**: Provides syntax highlighting, code snippets, and other language-specific features.
 - **Debugging**: Allows you to set breakpoints, inspect variables, and step through your code.
 - **Linting**: Helps you maintain code quality by checking for errors and enforcing coding standards.
-- **IntelliSense**: Offers intelligent code completions based on variable types, function definitions, and imported modules.
+- **IntelliCode**: Offers intelligent code completions based on variable types, function definitions, and imported modules.
 - **Jupyter Notebook Support**: Enables you to create and edit Jupyter Notebooks directly within VS Code.
 
 After installing the Python extension, you may also want to install additional extensions to further enhance your workflow:
