@@ -1,5 +1,7 @@
 # <span style="color:#9575CD">Part 1: Getting Started with Python on VS Code</span>
 
+test
+
 ## Table of Contents
 - [Step 1: Setting Up Anaconda](#step-1-setting-up-anaconda)
 - [Step 2: Creating Your First Environment](#step-2-creating-your-first-environment)
