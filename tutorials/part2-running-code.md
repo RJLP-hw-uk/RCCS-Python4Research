@@ -62,7 +62,7 @@ VS Code provides a powerful interactive coding experience similar to Jupyter Not
 2. Select a code block or the entire file
 3. Right-click and select "Run Current File in Interactive Window" or use the keyboard shortcut (Shift+Enter)
 
-![Interactive Window](/resources/images/interactive-window.png)
+![Interactive Window](/resources/images/interactive_window.png)
 
 The Interactive Window provides:
 - Cell-by-cell execution
