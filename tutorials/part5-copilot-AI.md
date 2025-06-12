@@ -2,12 +2,12 @@
 
 ## Table of Contents
 - [Step 1: Understanding GitHub Copilot](#step-1-understanding-github-copilot)
-- [Step 2: Getting Student Access](#step-2-getting-student-access)
+- [Step 2: Getting Access](#step-2-getting-access)
 - [Step 3: Setting Up Copilot in VS Code](#step-3-setting-up-copilot-in-vs-code)
 - [Step 4: Basic Copilot Usage](#step-4-basic-copilot-usage)
-- [Step 5: Advanced Prompting Techniques](#step-5-advanced-prompting-techniques)
-- [Step 6: Best Practices](#step-6-best-practices)
-- [Step 7: Hands-on Exercise](#step-7-hands-on-exercise)
+- [Step 5: Best Practices and Guidelines](#step-5-best-practices-and-guidelines)
+- [Step 6: Hands-on Exercise](#step-6-hands-on-exercise)
+- [Next Steps](#next-steps)
 
 ## <span style="color:#689F38">Step 1: Understanding GitHub Copilot</span>
 
@@ -31,30 +31,34 @@ For researchers, Copilot can:
 - Assist with unfamiliar libraries or APIs
 - Explain code functionality through comments
 
-## <span style="color:#689F38">Step 2: Getting Student Access</span>
+## <span style="color:#689F38">Step 2: Getting Access</span>
 
 GitHub Copilot is available for free to verified academics through the GitHub Student/Teacher Developer Pack.
 
-### <span style="color:#03A9F4">Accessing GitHub Student Developer Pack</span>
+### <span style="color:#03A9F4">Setting Up Your GitHub Account</span>
 
-1. Visit [GitHub Education](https://education.github.com/pack)
-2. Click "Get the Pack"
-3. Sign in with your GitHub account (or create one)
-4. Click "Get student benefits"
-5. Verify your student status using your university email
+1. Go to the GitHub website at [https://github.com](https://github.com)
+2. Click "Sign up" in the top-right corner if you don't have an account, or "Sign in" if you already have one
+3. Create a GitHub account using your university email, or link your university email to an existing GitHub account
+   - If creating a new account: Fill out the registration form with your name, university email, and password
+   - If using existing account: Go to your profile icon → Settings → Emails → Add email
+4. Verify your university email address when prompted by checking your inbox and clicking the verification link
+5. After signing in, click on your profile icon in the top-right corner and select "Settings"
+6. To add billing information:
+   - In the left sidebar, click on "Billing and plans"
+   - Enter your university address/information when prompted
+7. Enable two-factor authentication (required for GitHub benefits):
+   - In the left sidebar, navigate to "Password and authentication"
+   - Look for the "Two-factor authentication" section and click "Enable"
+   - Follow the on-screen instructions to complete the setup
 
-![GitHub Student Developer Pack Page](/resources/images/github-student-pack.png)
+### <span style="color:#03A9F4">Applying for Education Benefits</span>
 
-### <span style="color:#03A9F4">Activating GitHub Copilot</span>
-
-After your student status is verified:
-
-1. Go to [GitHub Copilot](https://github.com/features/copilot)
-2. Click "Start my free trial"
-3. Follow the prompts to activate Copilot for your account
-4. Verify that Copilot shows as active in your GitHub account settings
-
-> **Note**: Verification may take up to 48 hours, but is usually much faster.
+1. Go to your GitHub account settings
+2. Under "Billing and plans," select "Education benefits"
+3. Start a new application for GitHub Education benefits
+4. IMPORTATNT: Complete the verification process with your student/staff ID card AND use the camera to do so
+5. Wait 3 minutes for approval. Once approved you'll have full access to copilot the following day.
 
 ## <span style="color:#689F38">Step 3: Setting Up Copilot in VS Code</span>
 
@@ -64,7 +68,13 @@ After your student status is verified:
 2. Click the Extensions icon in the Activity Bar (or press `Ctrl+Shift+X`)
 3. Search for "GitHub Copilot"
 4. Click "Install" on the GitHub Copilot extension
-5. After installation, click "Sign in to GitHub" when prompted
+5. After installation, sign in to VS Code with your GitHub account:
+   - Click the account icon in the bottom-left corner
+   - Select "Sign in to GitHub"
+   - Your browser will open
+   - Authorize VS Code in the browser
+   - Return to VS Code
+   - Wait for the "GitHub Copilot" extension to activate
 
 ![GitHub Copilot Extension](/resources/images/copilot-extension.png)
 
@@ -72,163 +82,101 @@ After your student status is verified:
 
 To verify Copilot is working:
 
-1. Create a new Python file (e.g., `test_copilot.py`)
+1. Create a new Python file (`Ctrl+N` for new file, then `Ctrl+S` to save as `test_copilot.py`)
 2. Type a comment describing a simple function, like:
    ```python
    # Function to calculate the mean of a list of numbers
    ```
-3. Press Enter and wait a moment
-4. Copilot should suggest code for this function
+4. Press `Tab` to accept the ghosted text for the function that Copilot suggests.
 
 If Copilot suggestions appear as ghosted text, the installation was successful.
 
 ## <span style="color:#689F38">Step 4: Basic Copilot Usage</span>
 
-### <span style="color:#03A9F4">Getting Code Suggestions</span>
+### <span style="color:#03A9F4">1. Inline Suggestions</span>
 
-Copilot provides suggestions in several ways:
+Copilot offers real-time code suggestions as you type:
+- Press `Tab` to accept a suggestion
+- Keep typing to ignore it
+- Works best for completing lines or short blocks
 
-**1. Inline Completions:**
-As you type, Copilot offers completions. Press `Tab` to accept a suggestion or continue typing to ignore it.
-
-**2. Generating from Comments:**
-Write a descriptive comment about what you want to accomplish:
-
+Example:
 ```python
-# Create a scatter plot of x and y with a trend line
+# Copilot suggests completions as you type
+def calculate_mean(numbers):
+   # It will suggest: return sum(numbers) / len(numbers)
 ```
 
-**3. Function Signatures:**
-Start typing a function and Copilot will suggest the full signature:
+### <span style="color:#03A9F4">2. Copilot Chat (Ctrl+Shift+I)</span>
 
-```python
-def calculate_correlation(x, y):
+Chat interface for complex interactions:
+- Generate longer code snippets
+- Ask questions about your codebase
+- Reference multiple files or functions
+- Copy generated code or apply directly to editor
+
+Example chat prompts:
+```
+"Generate a function to process CSV files using pandas"
+"How can I optimize this loop for better performance?"
+"Write a test suite for the UserAuth class"
 ```
 
-**4. Completing Patterns:**
-If Copilot detects a pattern in your code, it will suggest similar code:
+### <span style="color:#03A9F4">3. Inline Editor (Ctrl+I)</span>
 
-```python
-# After writing code to process one column
-df['column1'] = df['column1'].fillna(0)
-# Copilot might suggest:
-# df['column2'] = df['column2'].fillna(0)
-```
+Surgical code modifications:
+1. Select code you want to modify
+2. Press Ctrl+I
+3. Describe the desired changes
+4. Accept or reject suggestions
 
-### <span style="color:#03A9F4">Keyboard Shortcuts</span>
+Example uses:
+- Convert code to use different libraries
+- Add error handling
+- Optimize selected functions
 
-- `Tab`: Accept the current suggestion
-- `Esc`: Dismiss the current suggestion
-- `Alt+]` (Windows) / `Option+]` (Mac): See next suggestion
-- `Alt+[` (Windows) / `Option+[` (Mac): See previous suggestion
-- `Ctrl+Enter`: Open Copilot suggestions in a separate panel
+## <span style="color:#689F38">Step 5: Best Practices and Guidelines</span>
 
-## <span style="color:#689F38">Step 5: Advanced Prompting Techniques</span>
-
-### <span style="color:#03A9F4">Writing Effective Prompts</span>
-
-The key to getting useful suggestions from Copilot is writing clear, specific prompts:
-
-**1. Be Specific:**
-```python
-# BAD: Plot the data
-# GOOD: Create a scatter plot of temperature vs. humidity with blue points and a red trend line
-```
-
-**2. Include Expected Inputs/Outputs:**
-```python
-# Function that takes a DataFrame with columns 'temp' and 'humidity'
-# and returns a new DataFrame with an additional 'heat_index' column
-```
-
-**3. Specify Libraries:**
-```python
-# Using pandas and matplotlib, load data.csv and create a histogram of the 'age' column
-```
-
-**4. Reference Existing Code:**
-Make sure related functions or variables are visible in the same file to give Copilot context.
-
-### <span style="color:#03A9F4">Using Copilot Chat</span>
-
-If you have access to Copilot Chat (newer feature):
-
-1. Open Copilot Chat with `Ctrl+Shift+I` (Windows) or `Cmd+Shift+I` (Mac)
-2. Ask questions about your code or request code snippets
-3. Use specific commands like `/explain` to understand code or `/tests` to generate tests
-
-## <span style="color:#689F38">Step 6: Best Practices</span>
-
-### <span style="color:#03A9F4">Verify and Understand Generated Code</span>
-
-Always review Copilot's suggestions for:
-
-1. **Correctness**: Does the code do what you intended?
-2. **Efficiency**: Is this the most efficient solution?
-3. **Security**: Are there any potential security issues?
-4. **Understanding**: Make sure you understand how the suggested code works
-
-> **Personal Experience**: Copilot is excellent for suggesting code, but it occasionally makes subtle errors or assumptions. Always run and test the generated code before relying on it.
-
-### <span style="color:#03A9F4">Ethical Considerations</span>
-
-When using Copilot, consider:
-
-1. **Citation**: If Copilot helps implement an algorithm or method for research, cite both the original method and mention that Copilot assisted with implementation
-2. **Learning**: Use Copilot as a learning tool, not just to copy solutions
-3. **Verification**: Always verify that generated code is correct and appropriate for your needs
-4. **Ownership**: Understand that you are responsible for all code in your project, even if AI-assisted
-
-
-## <span style="color:#689F38">Dos and Don'ts for New Programmers</span>
+### <span style="color:#03A9F4">Important Note</span>
+Think of GitHub Copilot as an enthusiastic but junior intern - everything it suggests must be carefully reviewed and fully understood before use. While it can speed up development, you are ultimately responsible for the code's correctness, security, and performance.
 
 ### <span style="color:#03A9F4">Dos</span>
-
-- **DO** learn basic programming concepts first - understand variables, loops, conditionals, and functions before heavily relying on Copilot
-- **DO** use Copilot to explore different approaches to problems you already understand
-- **DO** carefully review all generated code line-by-line to understand how it works
-- **DO** try writing code yourself first before asking Copilot for help
-- **DO** use Copilot to learn new libraries and APIs by examining its suggestions
-- **DO** break down complex problems into smaller parts with specific prompts
-- **DO** test all generated code thoroughly - never assume it works correctly
+- Learn basic programming concepts first
+- Review all generated code line-by-line
+- Test code thoroughly before using
+- Use as a learning tool for new libraries/APIs
+- Break down complex problems into smaller parts
+- Try writing code yourself first
 
 ### <span style="color:#03A9F4">Don'ts</span>
+- Don't use as a substitute for learning
+- Don't blindly accept suggestions
+- Don't rely on it for critical/sensitive code
+- Don't assume it's always correct/efficient
+- Don't use for assignments without permission
+- Don't let it handle security-critical code
 
-- **DON'T** use Copilot as a substitute for learning core programming concepts
-- **DON'T** blindly accept and use suggestions without understanding them
-- **DON'T** rely on Copilot for critical or sensitive code without thorough review
-- **DON'T** assume Copilot always generates the most efficient or correct solution
-- **DON'T** use Copilot to complete programming assignments without permission
-- **DON'T** forget that Copilot may generate outdated or incorrect code
-- **DON'T** let Copilot handle complex error handling or security-critical code
+### <span style="color:#03A9F4">Key Considerations</span>
 
-### <span style="color:#03A9F4">Balancing Learning and Assistance</span>
+1. **Verification**
+   - Check correctness and efficiency
+   - Review for security issues
+   - Ensure you understand the code
+   - Test thoroughly
 
-For new programmers, the key challenge is using Copilot as a learning aid without becoming dependent on it:
+2. **Ethics**
+   - Cite both original methods and AI assistance in research
+   - Use as a learning tool, not just for solutions
+   - Take responsibility for all code in your project
 
-1. **Start with basics manually**: Write simple code yourself to build fundamental skills
-2. **Understand before using**: Always ensure you can explain how generated code works
-3. **Learn from suggestions**: When Copilot suggests code you wouldn't have written, take time to study why it works
-4. **Gradually increase usage**: Start with using Copilot for simple tasks, then gradually use it for more complex problems as your understanding grows
+3. **Common Pitfalls**
+   - Overreliance on Copilot
+   - Skipping fundamental learning
+   - Implementing without understanding
+   - Neglecting debugging skills
 
-### <span style="color:#03A9F4">Common Pitfalls for Beginners</span>
 
-1. **Overreliance**: Becoming dependent on Copilot and struggling to code without it
-   - *Solution*: Set aside time to code without Copilot to build your skills
-
-2. **Skipping fundamentals**: Using Copilot before understanding basic programming concepts
-   - *Solution*: Take a structured approach to learning programming basics first
-
-3. **Copy without comprehension**: Implementing code you don't understand
-   - *Solution*: Challenge yourself to explain each line of generated code
-
-4. **False confidence**: Assuming all generated code is correct and optimal
-   - *Solution*: Always test and review generated code carefully
-
-5. **Neglecting debugging skills**: Not learning how to troubleshoot when code doesn't work
-   - *Solution*: Deliberately practice debugging Copilot-generated code
-
-## <span style="color:#689F38">Step 7: Hands-on Exercise</span>
+## <span style="color:#689F38">Step 6: Hands-on Exercise</span>
 
 Let's practice using Copilot with a simple research-oriented task:
 
