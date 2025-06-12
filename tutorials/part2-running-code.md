@@ -10,47 +10,43 @@
 
 ## <span style="color:#689F38">Running Python Scripts</span>
 
-### <span style="color:#03A9F4">Method 1: Simple Script Execution</span>
+## <span style="color:#03A9F4">Overview of Code Execution Options</span>
 
-The most straightforward way to run Python code in VS Code is using the run button:
+VS Code offers multiple ways to run Python code, each suited for different scenarios:
 
-1. Open your Python file in the editor
-2. Look for the ▶️ (play) button in the top-right corner of the editor window
-3. Click the play button to execute your script
+![VS Code Run Options](/resources/images/run-options.png)
 
-![Running a Python Script](/resources/images/run-python-script.png)
+Table of common run options:
 
-When you click the run button, VS Code will:
-- Start a new terminal if one doesn't exist
-- Execute your Python file using the selected Python interpreter
-- Show the output directly in the terminal
+| Option | Description | Best For |
+|--------|-------------|----------|
+| Run Python File | Executes entire script in integrated terminal | Quick script execution |
+| Run in Terminal | Executes script in dedicated terminal | Command-line arguments |
+| Run in Interactive | Opens Interactive Window | Data analysis and exploration |
+| Debug Python File | Starts basic debugger | Finding and fixing errors |
+| Run with Config | Launches with custom debug settings | Complex debugging scenarios |
 
-This method is ideal for:
-- Quick testing of script functionality
-- Running simple scripts without debugging needs
-- Getting immediate output from your code
 
-### <span style="color:#03A9F4">Method 2: Running in a Dedicated Terminal</span>
 
-You can also run Python files directly in the VS Code integrated terminal:
+### Key Considerations (Beginner-Friendly)
+For starting with Python in research:
+1. Interactive Window for data exploration - great for learning and immediate feedback
+2. Debug Mode for understanding code flow step by step
+3. Terminal for simple script execution and basic command-line usage
 
-1. Open the terminal in VS Code (`View > Terminal` or `` Ctrl+` ``)
-2. Navigate to your Python file's directory if needed
-3. Run the file using the Python command:
-    ```bash
-    python your_file.py
-    ```
+### Limitations (Advanced Users)
+When pushing the limits of VS Code's capabilities:
+- Memory intensive: Interactive Windows and Notebooks can be resource-heavy
+- Performance bottlenecks: Not optimal for complex numerical simulations
+- Computational limits: May struggle with intensive research computations
+- Debugging challenges: Complex class hierarchies and object relationships
+- Visualization constraints: Limited tools for advanced data structure inspection
 
-Benefits of using a dedicated terminal:
-- You maintain control over the execution environment
-- You can pass command-line arguments to your script
-- The terminal session persists, allowing you to review past outputs
-- You can run multiple scripts sequentially without closing the terminal
+> **Note:** These limitations mainly affect advanced research computing scenarios. For typical data analysis and exploratory tasks, interactive development tools like Interactive Window and Jupyter Notebooks provide excellent functionality.
 
-Example with command-line arguments:
-```bash
-python data_analysis.py --input data.csv --output results.csv
-```
+### Important Note on Debugging
+
+Debugging is essential for both interactive and script-based development. We will cover this later.
 
 ## <span style="color:#689F38">Working with the Interactive Window</span>
 
@@ -95,6 +91,72 @@ plt.show()
 Each `# %%` comment marks the start of a new cell. You can run individual cells by clicking the "Run Cell" button that appears above each cell or using Shift+Enter when your cursor is in a cell.
 
 This approach combines the best of both worlds: regular Python files and Jupyter-like interactivity.
+
+### <span style="color:#03A9F4">Working with Jupyter Notebooks (.ipynb)</span>
+
+VS Code provides excellent support for Jupyter Notebooks:
+
+1. **Create a new notebook**:
+    - Use Command Palette (Ctrl+Shift+P)
+    - Type "Create New Jupyter Notebook"
+    - Or right-click in Explorer and select "New Jupyter Notebook"
+
+2. **Basic notebook structure**:
+```python
+# Code cell
+import pandas as pd
+data = pd.read_csv('experiment.csv')
+
+# Markdown cell for documentation
+## Analysis Steps
+1. Load data
+2. Clean outliers
+3. Plot results
+```
+
+### <span style="color:#03A9F4">Research Workflow with Notebooks</span>
+
+Here's a practical example to get started:
+
+```python
+# %% 1. Introduction and Setup
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# %% 2. Generate Sample Research Data
+# Simulating temperature readings over time
+np.random.seed(42)
+dates = pd.date_range('2023-01-01', '2023-01-31')
+temps = np.random.normal(20, 5, len(dates))
+data = pd.DataFrame({'date': dates, 'temperature': temps})
+
+# %% 3. Basic Analysis
+print("Summary Statistics:")
+print(data.describe())
+
+# %% 4. Visualization
+plt.figure(figsize=(10, 6))
+plt.plot(data['date'], data['temperature'])
+plt.title('Temperature Variations')
+plt.xlabel('Date')
+plt.ylabel('Temperature (°C)')
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.show()
+
+# %% 5. Save Results
+data.to_csv('temperature_data.csv', index=False)
+```
+
+Try running each cell individually using Shift+Enter. Observe how the Interactive Window displays both code output and visualizations.
+
+### <span style="color:#03A9F4">Converting Between .py and .ipynb</span>
+
+VS Code allows you to:
+- Export notebooks to Python scripts
+- Convert Python scripts with cell markers to notebooks
+- Share notebooks with colleagues via GitHub or email
 
 ## <span style="color:#689F38">Debugging Basics</span>
 
