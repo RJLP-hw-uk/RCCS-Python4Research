@@ -26,8 +26,6 @@ Table of common run options:
 | Debug Python File | Starts basic debugger | Finding and fixing errors |
 | Run with Config | Launches with custom debug settings | Complex debugging scenarios |
 
-
-
 ### Key Considerations (Beginner-Friendly)
 For starting with Python in research:
 1. Interactive Window for data exploration - great for learning and immediate feedback
@@ -50,113 +48,63 @@ Debugging is essential for both interactive and script-based development. We wil
 
 ## <span style="color:#689F38">Working with the Interactive Window</span>
 
-### <span style="color:#03A9F4">The Jupyter Experience in VS Code</span>
-
-VS Code provides a powerful interactive coding experience similar to Jupyter Notebooks:
-
-1. Open your Python file
-2. Select a code block or the entire file
-3. Right-click and select "Run Current File in Interactive Window" or use the keyboard shortcut (Shift+Enter)
-
-![Interactive Window](/resources/images/interactive_window.png)
-![Interactive Window](/resources/images/interactive_window2.png)
-
-The Interactive Window provides:
-- Cell-by-cell execution
-- Rich output display (plots, tables, etc.)
-- Variable inspection
-- IntelliSense and code completion
-
 ### <span style="color:#03A9F4">Using Cell Comments for Code Organization</span>
 
-You can define code cells in regular Python files using special comments:
+The Interactive Window allows you to organize your code into cells using special comments. Open the example file `resources/example_code/part2-interactive-window.py` and try running each cell by clicking the "Run Cell" button above the cell or using Shift+Enter.
 
-```python
-# %% This is a cell heading
-import numpy as np
-import pandas as pd
+Cells provide numerous benefits for research code:
 
-# %% Data preparation
-data = pd.read_csv('data.csv')
-data.head()
+1. **Code Separation**: Divide your analysis into logical sections using `# %%` comments
+2. **Markdown Documentation**: Use `# %% [markdown]` for rich text notes, including:
+   - Headers with different levels using `#`, `##`, `###`
+   - Formatting with *italics* and **bold** text
+   - Bulleted and numbered lists
+3. **Mathematical Equations**: Include LaTeX formulas using `$equation$` or `$$equation$$`
+4. **Incremental Development**: Run and track results from individual code sections
+5. **Visual Comparison**: Modify a visualization cell and run it again to compare results
+6. **Result Persistence**: Outputs remain visible in the Interactive Window between sessions
 
-# %% Data visualization
-import matplotlib.pyplot as plt
-plt.figure(figsize=(10, 6))
-plt.plot(data['x'], data['y'])
-plt.title('My Research Data')
-plt.show()
-```
+For example, in our sample file, you can:
+1. Run the first few cells to see markdown formatting and mathematical equations
+2. Execute the data loading cell to import the Titanic dataset
+3. Run visualization cells to generate different plots of the same data
+4. View tabular data in a readable format
+5. Modify a visualization (like changing colors or labels) and run it again to see the changes
 
-Each `# %%` comment marks the start of a new cell. You can run individual cells by clicking the "Run Cell" button that appears above each cell or using Shift+Enter when your cursor is in a cell.
-
-This approach combines the best of both worlds: regular Python files and Jupyter-like interactivity.
+This workflow enables rapid iteration, documentation, and analysis tracking—ideal for reproducible research.
 
 ### <span style="color:#03A9F4">Working with Jupyter Notebooks (.ipynb)</span>
 
-VS Code provides excellent support for Jupyter Notebooks:
+In addition to Python files with cell markers, VS Code provides excellent support for native Jupyter Notebooks (.ipynb files). These files combine code, output, visualizations, and formatted text in a single document. Open the example notebook file [`resources/example_code/part2-jupyter-notebook.ipynb`](resources/example_code/part2-jupyter-notebook.ipynb) to see the previous example but in an ipynb file. This file was made by saving the previous example in the interactive window. 
 
-1. **Create a new notebook**:
-    - Use Command Palette (Ctrl+Shift+P)
-    - Type "Create New Jupyter Notebook"
-    - Or right-click in Explorer and select "New Jupyter Notebook"
+### Creating a New Jupyter Notebook
 
-2. **Basic notebook structure**:
-```python
-# Code cell
-import pandas as pd
-data = pd.read_csv('experiment.csv')
+To create a new Jupyter Notebook in VS Code:
 
-# Markdown cell for documentation
-## Analysis Steps
-1. Load data
-2. Clean outliers
-3. Plot results
-```
+1. **Using the Command Palette**:
+    - Press `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (Mac)
+    - Type "Jupyter: Create New Blank Notebook" and select it
+    - The new notebook will open in the editor
 
-### <span style="color:#03A9F4">Research Workflow with Notebooks</span>
+2. **From the File Menu**:
+    - Click File → New File
+    - Select "Jupyter Notebook" from the options
 
-Here's a practical example to get started:
+Once your notebook is created, you can add new cells using the "+ Code" or "+ Markdown" buttons at the top of the notebook or by pressing `Alt+Enter` to create a new cell below the current one.
 
-```python
-# %% 1. Introduction and Setup
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
+### <span style="color:#03A9F4">Interactive Window vs. Jupyter Notebooks</span>
 
-# %% 2. Generate Sample Research Data
-# Simulating temperature readings over time
-np.random.seed(42)
-dates = pd.date_range('2023-01-01', '2023-01-31')
-temps = np.random.normal(20, 5, len(dates))
-data = pd.DataFrame({'date': dates, 'temperature': temps})
+While similar, these tools have important differences:
 
-# %% 3. Basic Analysis
-print("Summary Statistics:")
-print(data.describe())
+| Feature | Interactive Window | Jupyter Notebook |
+|---------|-------------------|------------------|
+| Cell execution | Runs cells from Python files | Self-contained cells |
+| State persistence | Maintains session state | State saved in notebook file |
+| Output handling | Displays in separate pane | Outputs embedded with cells |
 
-# %% 4. Visualization
-plt.figure(figsize=(10, 6))
-plt.plot(data['date'], data['temperature'])
-plt.title('Temperature Variations')
-plt.xlabel('Date')
-plt.ylabel('Temperature (°C)')
-plt.grid(True)
-plt.xticks(rotation=45)
-plt.show()
-
-# %% 5. Save Results
-data.to_csv('temperature_data.csv', index=False)
-```
-
-Try running each cell individually using Shift+Enter. Observe how the Interactive Window displays both code output and visualizations.
-
-### <span style="color:#03A9F4">Converting Between .py and .ipynb</span>
-
-VS Code allows you to:
-- Export notebooks to Python scripts
-- Convert Python scripts with cell markers to notebooks
-- Share notebooks with colleagues via GitHub or email
+**When to use which?**
+- **Interactive Window**: For development-focused workflows where you want to maintain code in regular .py files but with interactive execution
+- **Jupyter Notebooks**: For analysis-focused workflows, sharing results, and when the narrative and visualization are central to your work
 
 ## <span style="color:#689F38">Debugging Basics</span>
 
@@ -197,6 +145,24 @@ During debugging, you can interact with your code using the Debug Console:
 3. This allows you to test hypotheses about your code's behavior
 
 For example, if you're stopped at a breakpoint inside a function, you can check variable values or test calculations without modifying your actual code.
+
+### <span style="color:#03A9F4">Debugging Practice Example</span>
+
+Open the example file `resources/example_code/part2-debugging-example.py` to practice debugging. This file contains a temperature analysis program with several deliberate bugs for you to find and fix:
+
+1. Set a breakpoint at the beginning of the `main()` function
+2. Start debugging by pressing F5
+3. Use Step Into (F11) to move through the code execution
+4. Watch how variable values change
+5. Try to identify the bugs in the conversion functions, calculation logic, and error handling
+
+Common bugs to look for:
+- Mathematical errors in formulas
+- Off-by-one errors in loops
+- Incorrect dictionary keys
+- Logical errors in calculations
+
+Try to fix each bug you find, then run the program again to see if your solution works!
 
 ## <span style="color:#689F38">Advanced Debugging with launch.json</span>
 
