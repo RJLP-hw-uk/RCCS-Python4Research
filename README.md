@@ -19,8 +19,10 @@ If you need to brush up on these concepts, consider these free Python courses:
 ## 📚 Contents
 
 1. [Getting Started with Python and VS Code](tutorials/part1-getting-started.md)
-2. [Data Extraction and Processing](tutorials/part2-data-extraction.md)
-3. [Creating Professional Data Visualizations](tutorials/part3-data-visualization.md)
+2. [Running Python Code in VS Code](tutorials/part2-running-code.md)
+3. [Using GitHub Copilot for Research](tutorials/part3-copilot-AI.md)
+4. [Data Extraction and Processing](tutorials/part4-data-extraction.md)
+5. [Creating Professional Data Visualizations](tutorials/part5-data-visualization.md)
 
 ## 📊 Content Poll
 
