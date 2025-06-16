@@ -115,7 +115,76 @@ Debugging is the process of finding and fixing errors in your code. VS Code prov
 - Examine variable values at different points in execution
 - Identify where and why errors occur
 
-### <span style="color:#03A9F4">Basic Debugging Steps</span>
+### <span style="color:#03A9F4">Common Debugging Methods</span>
+
+Several approaches can help you diagnose and fix problems in your code:
+
+1. **Print Statements - Simple yet effective**
+   - Adding temporary `print()` statements to show variable values
+   - Tracking program flow by printing markers at different points
+
+2. **Interactive Debugging with Breakpoints - Like a surgical knife for coding**
+   - Setting points where execution pauses for inspection
+   - Examining variables of your program at runtime and how they change
+   - Stepping through code execution line by line
+
+3. **Using the Debug Console - For quick tests while in debug mode**
+   - Evaluating expressions in the current execution context
+   - Testing potential fixes without modifying your code
+   - Inspecting complex data structures interactively
+
+4. **Log-Based Debugging - Traceable and informative but requires setup**
+   - Using logging modules instead of print statements
+   - Creating persistent debug records for complex applications
+   - Configuring different levels of detail (debug, info, warning, error)
+
+5. **Exception Handling - Pre-emptive method**
+   - Using try/except blocks to catch and diagnose errors
+   - Understanding error messages and stack traces
+   - Implementing graceful error recovery
+
+interactive debugging with breakpoints, although print statement debugging remains valuable for quick troubleshooting. Both approaches complement each other and form the foundation of effective debugging practices.
+
+### <span style="color:#03A9F4">Print Statement Debugging</span>
+
+Print statement debugging is the most accessible approach - simply adding strategic print statements to see what's happening in your code. This technique is demonstrated in `part2-debugging-example-1.py`:
+
+```python
+# Example from part2-debugging-example-1.py
+def calculate_average_with_prints(numbers):
+    """Calculate the average with debug prints."""
+    print(f"Input: {numbers}")
+    print(f"Input length: {len(numbers)}")
+    
+    total = 0
+    for num in numbers:
+        total += num
+        print(f"Added {num}, total is now {total}")
+    
+    print(f"Final total: {total}, dividing by length: {len(numbers)}")
+    return total/len(numbers)
+```
+
+When executed with input `[10, 20, 30]`, this produces output that helps trace the execution:
+```
+Input: [10, 20, 30]
+Input length: 3
+Added 10, total is now 10
+Added 20, total is now 30
+Added 30, total is now 60
+Final total: 60, dividing by length: 3
+20.0
+```
+
+This approach helps you:
+- Verify input data is what you expect
+- Track how values change during execution 
+- Identify exactly where issues occur (like division by zero with empty lists)
+- Understand the flow of execution through your code
+
+Print debugging is often sufficient for simple bugs and doesn't require any special tools or setup - making it the quickest way to start diagnosing problems.
+
+### <span style="color:#03A9F4">Basic Debugging with Breakpoints</span>
 
 1. **Set breakpoints** by clicking in the gutter (space to the left of your code line numbers)
 2. Start debugging by:
@@ -137,6 +206,37 @@ Debugging is the process of finding and fixing errors in your code. VS Code prov
 
 ![Debug Controls](/resources/images/debug-controls.png)
 
+### <span style="color:#03A9F4">Debugging Complex Data Structures</span>
+
+When working with nested data (lists of lists, dictionaries of dictionaries, etc.), breakpoints are particularly valuable:
+
+```python
+def find_value_in_nested_list(nested_list, target_value):
+    """Find the first occurrence of target_value in a nested list structure."""
+    def search_nested(current_list, current_path):
+        # Place a breakpoint here to examine the current state
+        
+        if isinstance(current_list, list):
+            for i, item in enumerate(current_list):
+                path = current_path + [i]
+                if item == target_value:
+                    # Place a breakpoint here to see when we find a match
+                    return path
+                elif isinstance(item, list):
+                    # Place a breakpoint here to observe recursive calls
+                    result = search_nested(item, path)
+                    if result:
+                        return result
+        return None
+    
+    return search_nested(nested_list, [])
+```
+
+With breakpoints at strategic locations, you can:
+- Watch the recursion unfold
+- See how the path is constructed
+- Understand exactly how your algorithm traverses complex structures
+
 ### <span style="color:#03A9F4">Using the Debug Console</span>
 
 During debugging, you can interact with your code using the Debug Console:
@@ -148,21 +248,50 @@ For example, if you're stopped at a breakpoint inside a function, you can check 
 
 ### <span style="color:#03A9F4">Debugging Practice Example</span>
 
-Open the example file `resources/example_code/part2-debugging-example.py` to practice debugging. This file contains a temperature analysis program with several deliberate bugs for you to find and fix:
+Open the example file `resources/example_code/part2-debugging-example-1.py` to practice debugging. This file contains:
 
-1. Set a breakpoint at the beginning of the `main()` function
-2. Start debugging by pressing F5
-3. Use Step Into (F11) to move through the code execution
-4. Watch how variable values change
-5. Try to identify the bugs in the conversion functions, calculation logic, and error handling
+1. A simple function with a potential division-by-zero bug
+2. Examples of print statement debugging
+3. A complex nested list search function perfect for interactive debugging
+
+Try these debugging exercises:
+1. Run the code and identify the bug in the `calculate_average` function
+2. Add print statements to debug the issue
+3. Fix the bug by adding proper error handling
+4. Use breakpoints to trace through the nested list search function
+5. Observe how the search algorithm works by stepping through the code
 
 Common bugs to look for:
-- Mathematical errors in formulas
+- Division by zero (empty lists)
 - Off-by-one errors in loops
-- Incorrect dictionary keys
-- Logical errors in calculations
+- Type errors when processing mixed data
+- Incorrect handling of edge cases
 
-Try to fix each bug you find, then run the program again to see if your solution works!
+### <span style="color:#03A9F4">Debugging with Exception Handling</span>
+
+Adding proper exception handling helps create more robust code:
+
+```python
+def calculate_average_safe(numbers):
+    """Calculate the average with proper error handling."""
+    if not numbers:
+        raise ValueError("Cannot calculate average of empty list")
+    
+    total = sum(numbers)
+    return total / len(numbers)
+
+# Using with try/except
+try:
+    result = calculate_average_safe([])
+except ValueError as e:
+    print(f"Handled error: {e}")
+    result = 0  # Default value or appropriate fallback
+```
+
+Proper exception handling makes debugging easier by:
+- Providing clear error messages
+- Failing early and explicitly
+- Making error conditions obvious
 
 ## <span style="color:#689F38">Advanced Debugging with launch.json</span>
 
