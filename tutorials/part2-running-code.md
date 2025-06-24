@@ -2,11 +2,17 @@
 
 ## Table of Contents
 - [Running Python Scripts](#running-python-scripts)
+- [Overview of Code Execution Options](#overview-of-code-execution-options)
 - [Working with the Interactive Window](#working-with-the-interactive-window)
+- [Working with Jupyter Notebooks (.ipynb)](#working-with-jupyter-notebooks-ipynb)
+- [Interactive Window vs. Jupyter Notebooks](#interactive-window-vs-jupyter-notebooks)
 - [Debugging Basics](#debugging-basics)
-- [Advanced Debugging with launch.json](#advanced-debugging-with-launchjson)
-- [Best Practices](#best-practices)
-- [Next Steps](#next-steps)
+    - [Why Debugging Matters](#why-debugging-matters)
+    - [Common Debugging Methods](#common-debugging-methods)
+    - [Print Statement Debugging](#print-statement-debugging)
+    - [Basic Debugging with Breakpoints](#basic-debugging-with-breakpoints)
+    - [Debugging Complex Data Structures](#debugging-complex-data-structures)
+    - [Using the Debug Console](#using-the-debug-console)
 
 ## <span style="color:#689F38">Running Python Scripts</span>
 
