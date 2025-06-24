@@ -14,8 +14,6 @@
 
 VS Code offers multiple ways to run Python code, each suited for different scenarios:
 
-![VS Code Run Options](/resources/images/run-options.png)
-
 Table of common run options:
 
 | Option | Description | Best For |
@@ -50,7 +48,7 @@ Debugging is essential for both interactive and script-based development. We wil
 
 ### <span style="color:#03A9F4">Using Cell Comments for Code Organization</span>
 
-The Interactive Window allows you to organize your code into cells using special comments. Open the example file `resources/example_code/part2-interactive-window.py` and try running each cell by clicking the "Run Cell" button above the cell or using Shift+Enter.
+The Interactive Window allows you to organize your code into cells using special comments. Open the example file [`resources/example_code/part2-interactive-window.py`](resources/example_code/part2-interactive-window.py) and try running each cell by clicking the "Run Cell" button above the cell or using Shift+Enter.
 
 Cells provide numerous benefits for research code:
 
@@ -73,9 +71,9 @@ For example, in our sample file, you can:
 
 This workflow enables rapid iteration, documentation, and analysis tracking—ideal for reproducible research.
 
-### <span style="color:#03A9F4">Working with Jupyter Notebooks (.ipynb)</span>
+## <span style="color:#03A9F4">Working with Jupyter Notebooks (.ipynb)</span>
 
-In addition to Python files with cell markers, VS Code provides excellent support for native Jupyter Notebooks (.ipynb files). These files combine code, output, visualizations, and formatted text in a single document. Open the example notebook file [`resources/example_code/part2-jupyter-notebook.ipynb`](resources/example_code/part2-jupyter-notebook.ipynb) to see the previous example but in an ipynb file. This file was made by saving the previous example in the interactive window. 
+In addition to Python files with cell markers, VS Code provides excellent support for native Jupyter Notebooks (.ipynb files). These files combine code, output, visualizations, and formatted text in a single document. Open the example notebook file [`resources/example_code/part2-jupyter-notebook.ipynb`](resources/example_code/part2-interactive-window.ipynb) to see the previous example but in an ipynb file. This file was made by saving the previous example in the interactive window. 
 
 ### Creating a New Jupyter Notebook
 
@@ -92,7 +90,7 @@ To create a new Jupyter Notebook in VS Code:
 
 Once your notebook is created, you can add new cells using the "+ Code" or "+ Markdown" buttons at the top of the notebook or by pressing `Alt+Enter` to create a new cell below the current one.
 
-### <span style="color:#03A9F4">Interactive Window vs. Jupyter Notebooks</span>
+## <span style="color:#03A9F4">Interactive Window vs. Jupyter Notebooks</span>
 
 While similar, these tools have important differences:
 
@@ -147,7 +145,7 @@ interactive debugging with breakpoints, although print statement debugging remai
 
 ### <span style="color:#03A9F4">Print Statement Debugging</span>
 
-Print statement debugging is the most accessible approach - simply adding strategic print statements to see what's happening in your code. This technique is demonstrated in `part2-debugging-example-1.py`:
+Print statement debugging is the most accessible approach - simply adding strategic print statements to see what's happening in your code. This technique is demonstrated in [`resources/example_code/part2-debugging-example-1.py`](resources/example_code/part2-debugging-example-1.py):
 
 ```python
 # Example from part2-debugging-example-1.py
@@ -186,125 +184,115 @@ Print debugging is often sufficient for simple bugs and doesn't require any spec
 
 ### <span style="color:#03A9F4">Basic Debugging with Breakpoints</span>
 
-1. **Set breakpoints** by clicking in the gutter (space to the left of your code line numbers)
-2. Start debugging by:
-    - Clicking the debug icon in the activity bar, then the play button
-    - Or pressing F5
-    - Or selecting "Start Debugging" from the Run menu
-
-![Setting Breakpoints](/resources/images/setting-breakpoints.png)
-
-3. **Control execution** with the debug toolbar that appears:
-    - Continue (F5): Run until the next breakpoint
-    - Step Over (F10): Execute the current line and stop at the next line
-    - Step Into (F11): Enter a function call to debug its internal code
-    - Step Out (Shift+F11): Complete the current function and return to the caller
-    - Restart (Ctrl+Shift+F5): Restart the debugging session
-    - Stop (Shift+F5): End debugging
-
-4. **Inspect variables** in the variables pane that appears during debugging
-
-![Debug Controls](/resources/images/debug-controls.png)
-
-### <span style="color:#03A9F4">Debugging Complex Data Structures</span>
-
-When working with nested data (lists of lists, dictionaries of dictionaries, etc.), breakpoints are particularly valuable:
+Let's practice breakpoint debugging using the `calculate_average_debug` function from [`resources/example_code/part2-debugging-example-1.py`](resources/example_code/part2-debugging-example-1.py). This function demonstrates how to strategically place breakpoints to understand code execution:
 
 ```python
-def find_value_in_nested_list(nested_list, target_value):
-    """Find the first occurrence of target_value in a nested list structure."""
-    def search_nested(current_list, current_path):
-        # Place a breakpoint here to examine the current state
-        
-        if isinstance(current_list, list):
-            for i, item in enumerate(current_list):
-                path = current_path + [i]
-                if item == target_value:
-                    # Place a breakpoint here to see when we find a match
-                    return path
-                elif isinstance(item, list):
-                    # Place a breakpoint here to observe recursive calls
-                    result = search_nested(item, path)
-                    if result:
-                        return result
+def calculate_average_debug(numbers):
+    """
+    Calculate the average of a list of numbers.
+    This function demonstrates debugging with breakpoints.
+    """
+    # BREAKPOINT 1: Add here to see the input
+    print(f"Input received: {numbers}")
+    
+    if not numbers:  # BREAKPOINT 2: Add here to check empty list handling
+        print("Empty list detected")
         return None
     
-    return search_nested(nested_list, [])
+    total = 0  # BREAKPOINT 3: Add here to see initial total
+    
+    for num in numbers:  # BREAKPOINT 4: Add here to see each iteration
+        total += num
+        print(f"Added {num}, running total: {total}")
+    
+    average = total / len(numbers)  # BREAKPOINT 5: Add here to see calculation
+    print(f"Final calculation: {total} / {len(numbers)} = {average}")
+    
+    return average  # BREAKPOINT 6: Add here to see the final result
+```
+
+**Step-by-step debugging instructions:**
+
+1. **Set strategic breakpoints** by clicking in the gutter (left margin) next to these line numbers:
+   - **Line with `print(f"Input received: {numbers}")`** - to examine what data enters the function
+   - **Line with `if not numbers:`** - to see how empty list detection works
+   - **Line with `for num in numbers:`** - to watch the loop iteration begin
+   - **Line with `total += num`** - to observe how the total accumulates
+   - **Line with `average = total / len(numbers)`** - to see the final calculation
+
+2. **Start debugging** by:
+   - Opening the file `part2-debugging-example-1.py`
+   - Pressing F5, or clicking the debug icon in the activity bar, then the play button
+   - Or right-clicking and selecting "Debug Python File"
+
+3. **Control execution** with the debug toolbar:
+   - **Continue (F5)**: Run until the next breakpoint
+   - **Step Over (F10)**: Execute the current line and stop at the next line
+   - **Step Into (F11)**: Enter a function call to debug its internal code
+   - **Step Out (Shift+F11)**: Complete the current function and return to the caller
+
+4. **Inspect variables** in the Variables pane:
+   - Watch how `numbers`, `total`, and `num` change as you step through
+   - Notice how `average` appears only after the calculation line executes
+
+**Try these debugging scenarios:**
+
+- **Normal case**: Run with `test_data = [10, 20, 30, 40, 50]` and step through to see normal execution
+- **Empty list**: Run with `empty_list = []` to see how the function handles edge cases
+- **Single value**: Run with `single_number = [42]` to verify the calculation works with one item
+- **Error case**: Run with `mixed_types = [10, 20, "hello", 30]` to see how type errors are caught
+
+When stopped at each breakpoint, use the Variables pane to inspect the current state and the Debug Console to test expressions like `len(numbers)` or `type(num)`.
+
+### <span style="color:#03A9F4">Debugging Complex Data Structures</span>
+When debugging research code, complex data structures are common - datasets with multiple dimensions, experimental results organized in nested dictionaries, or model outputs with hierarchical structures. Breakpoints excel at helping you understand these complex data flows:
+
+```python
+def analyze_experimental_results(experiment_data):
+    """Analyze nested experimental data with multiple conditions and measurements."""
+    results_summary = {}
+    
+    for experiment_id, conditions in experiment_data.items():
+        # Place a breakpoint here to examine each experiment's structure
+        condition_averages = {}
+        
+        for condition_name, measurements in conditions.items():
+            # Place a breakpoint here to inspect measurement arrays
+            if len(measurements) > 0:
+                avg_value = sum(measurements) / len(measurements)
+                std_dev = (sum((x - avg_value) ** 2 for x in measurements) / len(measurements)) ** 0.5
+                
+                condition_averages[condition_name] = {
+                    'mean': avg_value,
+                    'std': std_dev,
+                    'n_samples': len(measurements)
+                }
+                # Place a breakpoint here to verify calculations
+        
+        results_summary[experiment_id] = condition_averages
+    
+    return results_summary
 ```
 
 With breakpoints at strategic locations, you can:
-- Watch the recursion unfold
-- See how the path is constructed
-- Understand exactly how your algorithm traverses complex structures
+- Inspect the structure of incoming experimental data
+- Verify statistical calculations are working correctly
+- Watch how summary statistics accumulate across conditions
+- Debug data quality issues (missing values, unexpected formats)
+- Understand complex data transformations step-by-step
+
+This approach is invaluable when working with real research data that often has irregular structures, missing values, or unexpected formats that can break your analysis pipeline.
 
 ### <span style="color:#03A9F4">Using the Debug Console</span>
 
 During debugging, you can interact with your code using the Debug Console:
+
 1. While at a breakpoint, find the Debug Console tab at the bottom of VS Code
 2. Type expressions to evaluate them in the current context
 3. This allows you to test hypotheses about your code's behavior
 
 For example, if you're stopped at a breakpoint inside a function, you can check variable values or test calculations without modifying your actual code.
 
-### <span style="color:#03A9F4">Debugging Practice Example</span>
+> **Pro Tip:** I've added the shortcut Alt+E to send selections to the debug console. This allows you to quickly highlight code in your editor and send it to the debug console for evaluation while debugging.
 
-Open the example file `resources/example_code/part2-debugging-example-1.py` to practice debugging. This file contains:
 
-1. A simple function with a potential division-by-zero bug
-2. Examples of print statement debugging
-3. A complex nested list search function perfect for interactive debugging
-
-Try these debugging exercises:
-1. Run the code and identify the bug in the `calculate_average` function
-2. Add print statements to debug the issue
-3. Fix the bug by adding proper error handling
-4. Use breakpoints to trace through the nested list search function
-5. Observe how the search algorithm works by stepping through the code
-
-Common bugs to look for:
-- Division by zero (empty lists)
-- Off-by-one errors in loops
-- Type errors when processing mixed data
-- Incorrect handling of edge cases
-
-### <span style="color:#03A9F4">Debugging with Exception Handling</span>
-
-Adding proper exception handling helps create more robust code:
-
-```python
-def calculate_average_safe(numbers):
-    """Calculate the average with proper error handling."""
-    if not numbers:
-        raise ValueError("Cannot calculate average of empty list")
-    
-    total = sum(numbers)
-    return total / len(numbers)
-
-# Using with try/except
-try:
-    result = calculate_average_safe([])
-except ValueError as e:
-    print(f"Handled error: {e}")
-    result = 0  # Default value or appropriate fallback
-```
-
-Proper exception handling makes debugging easier by:
-- Providing clear error messages
-- Failing early and explicitly
-- Making error conditions obvious
-
-## <span style="color:#689F38">Advanced Debugging with launch.json</span>
-
-### <span style="color:#03A9F4">Creating a launch.json File</span>
-
-For more control over debugging, you can create a `launch.json` file:
-
-1. Click the "Run and Debug" icon in the Activity Bar
-2. Click "create a launch.json file" or the gear icon
-3. Select "Python" from the environment options
-
-VS Code will create a `.vscode` folder in your project with a `launch.json` file containing basic Python debugging configuration.
-
-### <span style="color:#03A9F4">Customizing Your Debug Configuration</span>
-
-Here's an example of a

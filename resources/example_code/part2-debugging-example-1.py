@@ -24,16 +24,35 @@ test_data = [10, 20, 30, 40, 50]
 print(f"Average of {test_data}: {calculate_average(test_data)}")
 
 # %%
-# Now let's try with some problematic data
+# Now let's try with some problematic data to see what errors look like
 empty_list = []
-try:
-    result = calculate_average(empty_list)
-    print(f"Average of empty list: {result}")
-except Exception as e:
-    print(f"Error occurred: {type(e).__name__}: {e}")
+result = calculate_average(empty_list)
+
+# %% [markdown]
+# Understanding the traceback: 
+"""
+---------------------------------------------------------------------------
+ZeroDivisionError                         Traceback (most recent call last)
+File RJLP-hw-uk\RCCS-Python4Research\resources\example_code\part2-debugging-example-1.py:1
+----> 1 result = calculate_average(empty_list)
+
+File RJLP-hw-uk\RCCS-Python4Research\resources\example_code\part2-debugging-example-1.py:8
+      6 for num in numbers:
+      7     total += num
+----> 8 return total/len(numbers)
+
+ZeroDivisionError: division by zero
+"""
+
+# The error message tells us:
+# - **ZeroDivisionError**: This means we tried to divide by zero
+# - **Traceback**: Shows the call stack leading to the error
+# - The last line indicates where the error occurred: `return total/len(numbers)`
+
 
 # %% [markdown]
 # ## Debugging Method 1: Print Statements
+# Sometimes no traceback is available, or you want to understand the flow of your code better.
 # Let's add print statements to see what's happening inside the function
 
 # %%
@@ -72,43 +91,61 @@ calculate_average_with_prints([10, 20, 30])
 # When you run the code with the "Run" button or Debug menu, execution will pause at these breakpoints.
 
 # %%
-def find_value_in_nested_list(nested_list, target_value):
+def calculate_average_debug(numbers):
     """
-    Find the first occurrence of target_value in a nested list structure.
-    Returns the path to the value as a list of indices, or None if not found.
+    Calculate the average of a list of numbers.
+    This function demonstrates debugging with breakpoints.
     """
-    def search_nested(current_list, current_path):
-        # Add a breakpoint by clicking in the left margin next to this line
-        
-        if isinstance(current_list, list):
-            for i, item in enumerate(current_list):
-                path = current_path + [i]
-                if item == target_value:
-                    # Add a breakpoint here to see when we find a match
-                    return path
-                elif isinstance(item, list):
-                    # Add a breakpoint here to observe recursive calls
-                    result = search_nested(item, path)
-                    if result:
-                        return result
+    # Add a breakpoint here to see the input
+    print(f"Input received: {numbers}")
+    
+    if not numbers:  # Add a breakpoint here to check empty list handling
+        print("Empty list detected")
         return None
     
-    return search_nested(nested_list, [])
+    total = 0  # Add a breakpoint here to see initial total
+    
+    for num in numbers:  # Add a breakpoint here to see each iteration
+        total += num
+        print(f"Added {num}, running total: {total}")
+    
+    average = total / len(numbers)  # Add a breakpoint here to see calculation
+    print(f"Final calculation: {total} / {len(numbers)} = {average}")
+    
+    return average  # Add a breakpoint here to see the final result
 
 # %%
-# Test data with a nested structure
-nested_data = [1, 2, [3, 4, [5, 6]], 7, [8, 9]]
-
-# Test the function
-target = 6
-path = find_value_in_nested_list(nested_data, target)
-print(f"Path to value {target}: {path}")
+# Test with good data
+test_data = [10, 20, 30, 40, 50]
+result = calculate_average_debug(test_data)
+print(f"Average of {test_data}: {result}")
 
 # %%
-# Let's try with a value that doesn't exist
-missing_target = 10
-path = find_value_in_nested_list(nested_data, missing_target)
-print(f"Path to value {missing_target}: {path}")
+# Test with empty list (this should handle gracefully now)
+empty_list = []
+result_empty = calculate_average_debug(empty_list)
+print(f"Average of empty list: {result_empty}")
+
+# %%
+# Test with single number
+single_number = [42]
+result_single = calculate_average_debug(single_number)
+print(f"Average of {single_number}: {result_single}")
+
+# %%
+# Test with negative numbers
+negative_numbers = [-10, -5, 0, 5, 10]
+result_negative = calculate_average_debug(negative_numbers)
+print(f"Average of {negative_numbers}: {result_negative}")
+
+# %%
+# This will cause a TypeError - mixing numbers with strings
+mixed_types = [10, 20, "hello", 30]
+try:
+    result_mixed = calculate_average_debug(mixed_types)
+    print(f"Average of mixed types: {result_mixed}")
+except TypeError as e:
+    print(f"TypeError occurred: {e}")
 
 # %% [markdown]
 # ### Using VS Code Breakpoints for Debugging
@@ -123,10 +160,14 @@ print(f"Path to value {missing_target}: {path}")
 #    - Step Out (Shift+F11): Complete the current function and return to the caller
 #    - Continue (F5): Resume execution until the next breakpoint
 # 
-# ### Debugging Exercise:
+# ### Debugging Exercise with calculate_average:
 # 
-# 1. Add breakpoints by clicking in the left margin next to lines 143, 147, and 149
+# 1. Add breakpoints by clicking in the left margin next to these key lines:
+#    - Line 120: Function entry to see input parameters
+#    - Line 125: Empty list check to see how edge cases are handled
+#    - Line 109: Inside the loop to watch the accumulation process
+#    - Line 112: Division line to see the final calculation
 # 2. Start debugging by clicking the Run/Debug button
-# 3. When execution pauses, examine the values of `current_list` and `current_path`
-# 4. Step through the code to see how the function traverses the nested list
-# 5. Note how the path gets built up as you move deeper into the nested structure
+# 3. When execution pauses, examine the values of `numbers`, `total`, and `num`
+# 4. Step through the code to understand the flow
+# 5. Try running each test case to see how different inputs behave
